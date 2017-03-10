@@ -1,9 +1,8 @@
 <h1>Sign Into Your Account!</h1>
- <%= form_for @account do |f| %>
+ <%= form_for @account, url: "/signin", method: :post do |f| %>
  	<%= f.label :username%>
  	<%= f.text_field :username %>
  	<%= f.label :password %>
  	<%= f.password_field :password %>
- 	<%= f.submit %>
+ 	<%= f.submit "Sign In" %>
  <%end%>
- <%= link_to "Home" root_path %>
