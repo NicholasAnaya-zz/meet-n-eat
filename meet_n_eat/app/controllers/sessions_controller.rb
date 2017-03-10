@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
 			session[:username] = param[:username]
 			redirect_to account_path(@account)
 		else
-			flash[:error] = "Please Enter a Valid Username and Password"
-			redirect_to root_path
+			flash[:error] = "Your Username or Password is not valid. If you do not have an account, please signup to find dinner buddies!"
+			redirect_to signin_path
 		end
 	end
 
