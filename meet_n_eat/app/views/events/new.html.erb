@@ -1,0 +1,27 @@
+<% if flash[:error] %>
+	<%= flash[:error] %>
+<%end%>
+
+<h1>Create a new Event:</h1>
+<%= form_for (@event) do |f| %>
+	<%= f.label :spot %><br>
+	<%= f.text_field :spot %><br></br>
+	<%= f.label "Budget Categories" %><br>
+	<%= f.radio_button :budget, "inexpensive", checked: true%>
+	<%= f.label "Inexpensive" %><br>
+	<%= f.radio_button :budget, "moderate"%>
+	<%= f.label "Moderate" %><br>
+	<%= f.radio_button :budget, "pricey"%>
+	<%= f.label "Pricey" %><br>	
+	<%= f.radio_button :budget, "high-end"%>
+	<%= f.label "High-End" %><br></br>
+	<%= f.label :location %><br>
+	<%= f.text_field :location %><br></br>
+	<%= f.label :cuisine %><br>
+	<%= f.text_field :cuisine %><br></br>
+	<%= f.label :time%><br>
+	<%= f.time_select :time%><br></br>
+
+	<%= f.submit "Create Event"%>
+<%end%><br>
+<%=link_to "home", root_path %>

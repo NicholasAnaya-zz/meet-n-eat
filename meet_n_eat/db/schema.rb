@@ -33,7 +33,8 @@ ActiveRecord::Schema.define(version: 20170310153336) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.decimal  "budget"
+    t.string   "spot"
+    t.string   "budget"
     t.string   "location"
     t.string   "cuisine"
     t.time     "time"
