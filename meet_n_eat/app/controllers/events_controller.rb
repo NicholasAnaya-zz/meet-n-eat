@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+	before_action :account_logged_in
 
 	def index
 		@events = Event.all
@@ -14,9 +15,8 @@ class EventsController < ApplicationController
 
 	def create
 		event = Event.new(event_params)
-		event.host_id = session[:account_id]
+		event.host_id = session[:account_id] #add host_id to our event so it can validate
 		if event.valid?
-			# add host_id to our new event
 			event.save
 			redirect_to event_path(event)
 		else
@@ -46,6 +46,17 @@ class EventsController < ApplicationController
 	end
 
 	private
+
+	def logged_in?
+		return !!session[:account_id]		
+	end
+
+	def account_logged_in
+		unless logged_in?
+			flash[:message] = "Please log in to view this page."
+			redirect_to signin_path
+		end
+	end
 
 	def event_params
 		return params.require(:event).permit(:spot, :budget, :location, :cuisine, :time, :host_id)
