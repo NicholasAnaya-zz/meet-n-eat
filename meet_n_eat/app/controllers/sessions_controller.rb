@@ -5,9 +5,10 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		if params[:username] && !params[:username].empty?
-			session[:username] = param[:username]
-			redirect_to account_path(@account)
+		account = Account.find_by(username: params[:account][:username])
+		if (account && account.authenticate(params[:account][:password])) 
+			session[:account_id] = account.id
+			redirect_to account_path(account)
 		else
 			flash[:error] = "Your Username or Password is not valid. If you do not have an account, please signup to find dinner buddies!"
 			redirect_to signin_path
@@ -15,7 +16,8 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
-		session.delete(:username)
+		session.delete(:account_id)
+		redirect_to signin_path
 	end
 
 end
