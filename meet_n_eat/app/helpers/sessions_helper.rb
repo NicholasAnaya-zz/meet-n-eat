@@ -1,5 +1,13 @@
 module SessionsHelper
 
+  def current_account=(account)
+    @current_account = accounts
+  end
+
+  def current_account
+     @current_account ||= Account.find_by(id: session[:account_id])
+  end
+
   def logged_in?
     !!session[:account_id]
   end
