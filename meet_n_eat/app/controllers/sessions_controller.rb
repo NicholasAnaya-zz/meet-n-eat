@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
-		session[:account_id] = nil #change!!!!!
+		log_out()
     	redirect_to signin_path
 	end
 end

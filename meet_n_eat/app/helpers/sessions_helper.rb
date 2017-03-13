@@ -12,6 +12,6 @@ module SessionsHelper
 	end
 
   def log_out
-    session.delete(:id)
+    session.delete(:account_id)
   end
 end
