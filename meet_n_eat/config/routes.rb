@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-	root 'static#home'
+	root 'home#index'
 
 	get '/signin', to: 'sessions#new'
 	post '/signin', to: 'sessions#create' #change destination

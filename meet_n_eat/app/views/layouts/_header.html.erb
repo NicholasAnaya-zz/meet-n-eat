@@ -2,7 +2,7 @@
   <div class="container">
   	
     	<% if logged_in? %>
-  			<%= link_to "Meet n' Eat", account_path(current_account), id: "logo" %>
+  			<%= link_to "Meet n' Eat", root_path, id: "logo" %>
       		<ul class="nav navbar-nav navbar-right">
       	    <li><%= link_to "My Profile", account_path(current_account), id: "nav_links" %></li>
     			  <li><%= link_to "Events", events_path, id: "nav_links" %></li>
