@@ -1,4 +1,26 @@
+<<<<<<< HEAD
 <div class=container>
 	<br></br>
 	<center><h1><%= @account.first_name%>'s Page</h1></center>
 </div>
+=======
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile</title>
+      <h1> Welcome, <%= @account.first_name%>!</h1>
+        <h3>Profile Information:</h3>
+  </head>
+
+  <body>
+    <label for="Biography">Biography:</label>
+      <p> <%= @account.biography%></p>
+
+    <label for="Favorite Food">Favorite Food:</label>
+      <p> <%= @account.favorite_food%></p>
+
+      <%= button_to "Edit", edit_account_path(@account), method: :get %>
+  </body>
+</html>
+>>>>>>> master

@@ -3,7 +3,7 @@
 <%end%>
 
 <h1>Register For A New Account:</h1>
-<%= form_for (@account) do |f| %>
+<%= form_for (@account), validate: true do |f| %>
 	<%= f.label :username %><br>
 	<%= f.text_field :username %><br></br>
 	<%= f.label :password %><br>

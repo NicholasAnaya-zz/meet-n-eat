@@ -1,0 +1,9 @@
+<div class="center jumbotron">
+<h1>Meet 'n' Eat!</h1>
+
+<% if logged_in? %>
+	<p id="para">Hey, there.</p>
+<% else %>
+	<p id="para">Sign in to find meal buddies!<br><%= link_to "Sign In", signin_path %></p>
+	<p id="para">Make A New Account!<br><%= link_to "Sign Up", new_account_path %></p>
+<% end %>

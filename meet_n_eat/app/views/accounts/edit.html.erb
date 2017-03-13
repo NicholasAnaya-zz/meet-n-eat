@@ -1,1 +1,16 @@
-edit.html.erb
+<h1> <%= @account.first_name%>'s Page </h1>
+<h2>Welcome to Meet N Eat</h2>
+
+<% if flash[:error] %>
+<%= flash[:error] %>
+<%end%>
+
+<h4>Edit Your Profile, Sucka:</h4>
+  <%= form_for (@account) do |f| %>
+  	<%= f.label :biography %><br>
+  	<%= f.text_area :biography %><br></br>
+    <%= f.label :favorite_food %><br>
+  	<%= f.text_area :favorite_food %><br></br>
+
+  	<%= f.submit "Submit Profile"%>
+<%end%>

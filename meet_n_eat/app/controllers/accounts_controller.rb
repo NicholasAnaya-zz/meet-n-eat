@@ -10,6 +10,10 @@ class AccountsController < ApplicationController
 		@account = Account.new
 	end
 
+	def edit
+		@account = Account.find(params[:id])
+	end
+
 	def create
 		@account = Account.new(account_params)
 		if @account.valid?
@@ -22,12 +26,14 @@ class AccountsController < ApplicationController
 		end
 	end
 
-	def edit
-
-	end
-
 	def update
-
+		account = Account.find(params[:id])
+		if account.update(account_edit_params)
+			redirect_to account_path(account)
+		else
+			flash[:error] = "Update is invalid"
+			redirect_to edit_account_path(account)
+		end
 	end
 
 
@@ -42,5 +48,9 @@ class AccountsController < ApplicationController
 
 	def account_params
 		params.require(:account).permit(:username, :password, :email, :first_name, :last_name)
+	end
+
+	def account_edit_params
+		params.require(:account).permit(:biography, :favorite_food)
 	end
 end
