@@ -2,8 +2,7 @@
 <%= flash[:error] %>
 <%end%>
 
-<div style="width: 300px; margin: 100px auto 0 auto;">
-
+<div <div align="center" type="text" name="search" />
 <h1>Sign Into Your Account!</h1>
  <%= form_for @account, url: signin_path, method: :post do |f| %>
  	<%= f.label :username%>
@@ -13,5 +12,5 @@
  	<%= f.submit "Sign In" %>
  <%end%><br></br>
  <h4>If you do not yet have an account click here! <%= link_to "Sign Up", new_account_path %></h4>
- <h5><%= link_to "go home", root_path %></h5>
+ <div align="center" type="text" name="search" /><h5><%= link_to "go home", root_path %></h5>
  </div>

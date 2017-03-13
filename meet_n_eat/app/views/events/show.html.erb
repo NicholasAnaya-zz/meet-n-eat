@@ -2,4 +2,4 @@
 <%= @event.budget %>
 <%= @event.location %>
 <%= @event.cuisine %>
-<%= Account.find(@event.host_id).first_name %>
+<%= @event.host.first_name %>
