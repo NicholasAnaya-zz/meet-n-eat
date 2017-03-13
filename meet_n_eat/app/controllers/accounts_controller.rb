@@ -32,7 +32,6 @@ class AccountsController < ApplicationController
 
 	private
 
-
 	def check_if_own_page
 		unless session[:account_id] === params[:id].to_i
 			flash[:message] = "Sorry, you do not have permission to do that."

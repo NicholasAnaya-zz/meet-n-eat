@@ -5,11 +5,11 @@ module SessionsHelper
   end
 
   def current_account
-     @current_account ||= Account.find_by(id: session[:id])
+     @current_account ||= Account.find_by(id: session[:account_id])
   end
 
   def logged_in?
-    !current_account.nil?
+    !!session[:account_id]
   end
 
   def account_logged_in
@@ -19,13 +19,7 @@ module SessionsHelper
 		end
 	end
 
-	def log_in(account)
-		session[:id] = account.id
-	end
-
-
   def log_out
-    session.delete(:id)
-    @current_account = nil
+    session.delete(:account_id)
   end
 end
