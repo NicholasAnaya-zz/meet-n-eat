@@ -9,4 +9,8 @@ class Event < ApplicationRecord
   validates :location, presence: true
   validates :cuisine, presence: true
   validates :time, presence: true
+
+  def self.all_events_by_others(id)
+  	return Event.where('id != ?', id)
+  end
 end
