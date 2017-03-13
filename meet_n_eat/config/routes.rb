@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :events
   resources :accounts do
-  	resources :events, only: [:index, :show]
+  	resources :events, only: [:index, :show, :edit, :update]
   end
 
 end
