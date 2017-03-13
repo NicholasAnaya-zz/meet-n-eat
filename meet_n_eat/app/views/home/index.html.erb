@@ -2,8 +2,8 @@
 <h1>Meet 'n' Eat!</h1>
 
 <% if logged_in? %>
-	<%= link_to("Find Events", events_path, id: "find_event") %>
-	<%= link_to("Create Event", new_event_path, id: "create_event") %>
+	<%= link_to("Find Events", events_path) %>
+	<%= link_to("Create Event", new_event_path) %>
 <% else %>
 	<p>Sign in to find meal buddies!<br><%= link_to "Sign In", signin_path %></p>
 	<p>Make A New Account!<br><%= link_to "Sign Up", new_account_path %></p>
