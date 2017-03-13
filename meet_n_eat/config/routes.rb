@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
 	root 'home#index'
 
+	get '/about', to: 'static#about'
+	get '/contact', to: 'static#contact'
+
 	get '/signin', to: 'sessions#new'
 	post '/signin', to: 'sessions#create' #change destination
 	get '/signout', to: 'sessions#destroy'
