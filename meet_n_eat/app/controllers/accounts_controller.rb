@@ -18,6 +18,7 @@ class AccountsController < ApplicationController
 		@account = Account.new(account_params)
 		if @account.valid?
 			@account.save
+			log_in(@account)
 			redirect_to account_path(@account)
 		else
 			flash[:error] = "Please try again"

@@ -12,6 +12,10 @@ module SessionsHelper
     !!session[:account_id]
   end
 
+  def log_in(account)
+    session[:account_id] = account.id
+  end
+
   def account_logged_in
 		unless logged_in?
       flash[:message] = "Please log in to view this page."
