@@ -3,3 +3,7 @@
 <%= @event.location %>
 <%= @event.cuisine %>
 <%= @event.host.first_name %>
+
+<% @event.guests.each do |guest| %>
+  <%= guest.first_name %>
+<% end %>

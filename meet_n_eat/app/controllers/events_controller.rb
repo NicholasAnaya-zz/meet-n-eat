@@ -3,6 +3,7 @@ class EventsController < ApplicationController
 
 	def index
 		@events = Event.all
+		# _events_by_others(current_account.id)
 	end
 
 	def show
@@ -36,6 +37,12 @@ class EventsController < ApplicationController
 		else
 			redirect_to edit_event_path(event)
 		end
+	end
+
+	def join
+		event = Event.find(params[:id])
+		event.guests << current_account
+		redirect_to events_path
 	end
 
 	def destroy

@@ -3,7 +3,9 @@
 <%end%>
 
 <h1>Register For A New Account:</h1>
+
 <div align="center" type="text" name="search" />
+
 <%= form_for (@account) do |f| %>
 	<%= f.label :username %><br>
 	<%= f.text_field :username %><br>
@@ -17,4 +19,5 @@
 	<%= f.text_field :email %><br></br>
 <%= f.submit "Create Account"%>
 <%end%><br>
+
 <%=link_to "go home", root_path %>
