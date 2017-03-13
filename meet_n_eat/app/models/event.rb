@@ -11,6 +11,6 @@ class Event < ApplicationRecord
   validates :time, presence: true
 
   def self.all_events_by_others(id)
-  	return Event.where('id != ?', id)
+  	return Event.where('host_id != ?', id)
   end
 end

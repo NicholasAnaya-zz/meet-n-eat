@@ -1,3 +1,4 @@
 <% @events.each do |event| %>
-	Event: <%= event.spot %> by <%= Account.find(event.host_id).first_name %> <br>
+	<%= link_to event.host.first_name, account_path(event.host.id) %> is having <%= link_to "meal", event_path(event.id) %> at <%= event.spot %> <%= button_to "Join Event", join_path(event.id) %>
+	<br>
 <% end %>

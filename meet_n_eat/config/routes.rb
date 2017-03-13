@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 	post '/signin', to: 'sessions#create' #change destination
 	get '/signout', to: 'sessions#destroy'
 
+	post '/join_event/:id', to: 'events#join', as: 'join' 
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :events
