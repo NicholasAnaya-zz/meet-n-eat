@@ -1,4 +1,10 @@
 <% @events.each do |event| %>
-	<%= link_to event.host.first_name, account_path(event.host.id) %> is having <%= link_to "meal", event_path(event.id) %> at <%= event.spot %> <%= button_to "Join Event", join_path(event.id) %>
+	<%= link_to event.host.first_name, account_path(event.host.id) %> is having <%= link_to "meal", event_path(event.id) %> at <%= event.spot %> 
+
+	<% unless current_account.attended_events.include?(event) %>
+		<% unless current_account.created_events.include?(event) %>
+			<%= button_to "Join Event", join_path(event.id) %>
+		<% end %>
+	<% end %>
 	<br>
 <% end %>

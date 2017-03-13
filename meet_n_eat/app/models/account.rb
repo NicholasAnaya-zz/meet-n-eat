@@ -11,4 +11,8 @@ class Account < ApplicationRecord
   validates :email, email: true
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  def self.all_events_for_account(id)
+    return Account.find(id).attended_events
+  end
 end
