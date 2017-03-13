@@ -1,6 +1,10 @@
 class EventsController < ApplicationController
 	before_action :account_logged_in
 
+	def root
+		
+	end
+
 	def index
 		@events = Event.all
 	end
