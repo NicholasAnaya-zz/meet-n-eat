@@ -1,3 +1,3 @@
-<%= @events.each do |event| %>
+<% @events.each do |event| %>
 	Event: <%= event.spot %> by <%= Account.find(event.host_id).first_name %> <br>
 <% end %>

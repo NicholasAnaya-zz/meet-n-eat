@@ -12,9 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-<<<<<<< HEAD
 //= require bootstrap-sprockets
-=======
 //= require rails.validations
->>>>>>> master
 //= require_tree .
