@@ -29,22 +29,9 @@ class AccountsController < ApplicationController
 
 	end
 
-	def destroy
-
-	end
 
 	private
 
-	def logged_in?
-		return !!session[:account_id]		
-	end
-
-	def account_logged_in
-		unless logged_in?
-			flash[:message] = "Please log in to view this page."
-			redirect_to signin_path
-		end
-	end
 
 	def check_if_own_page
 		unless session[:account_id] === params[:id].to_i

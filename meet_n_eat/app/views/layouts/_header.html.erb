@@ -1,10 +1,24 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Meet n' Eat", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path, id: "nav_links"%></li>
-      </ul>
-    </nav>
+  	
+    	<% if logged_in? %>
+  			<%= link_to "Meet n' Eat", accounts_path(@account), id: "logo" %>
+      			<ul class="nav navbar-nav navbar-right">
+      			<li><%= link_to "My Profile", accounts_path(
+      			@account), id: "nav_links" %></li>
+    			<li><%= link_to "Events", events_path, id: "nav_links" %></li>
+    			<li><%= link_to "New Event", new_event_path, id: "nav_links"%></li>
+       	 		<li><%= link_to 'Log out', signout_path, method: :delete, data: { confirm: 'Are you sure?' }, id: "nav_links"%></li>
+      			</ul>
+        </nav>
+    
+    
+    	<% else %>
+    		<%= link_to "Meet n' Eat", root_path, id: "logo" %>
+      			<ul class="nav navbar-nav navbar-right">
+       		 	<li><%= link_to "Home", root_path, id: "nav_links"%></li>
+      			</ul>
+    	<% end %>
+
   </div>
 </header>
