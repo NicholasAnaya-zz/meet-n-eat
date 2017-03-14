@@ -13,6 +13,14 @@ class Account < ApplicationRecord
   validates :last_name, presence: true
 
   def self.all_events_for_account(id)
-    return Account.find(id).attended_events
+    account = Account.find(id)
+    return (account.attended_events << account.created_events)
   end
+
+  def self.all_available_events(id)
+    account = Account.find(id)
+    non_available_events = self.all_events_for_account(account.id)
+    return Event.select { |event| !non_available_events.include?(event) }
+  end
+
 end

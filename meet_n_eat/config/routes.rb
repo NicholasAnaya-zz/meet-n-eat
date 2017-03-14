@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 	get '/signout', to: 'sessions#destroy'
 
 	post '/join_event/:id', to: 'events#join', as: 'join' 
+	post '/leave_event/:id', to: 'events#leave', as: 'leave'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

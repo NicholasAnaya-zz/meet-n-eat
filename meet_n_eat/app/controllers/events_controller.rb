@@ -2,10 +2,11 @@ class EventsController < ApplicationController
 	before_action :account_logged_in
 
 	def index
-		if (params[:account_id])
-			@events = Account.all_events_for_account(current_account.id)
+		if params[:account_id]
+			@personal = true
+			@my_events = Account.all_events_for_account(current_account.id)
 		else
-			@events = Event.all_events_by_others(current_account.id)
+			@available_events = Account.all_available_events(current_account.id)
 		end
 	end
 
@@ -45,6 +46,13 @@ class EventsController < ApplicationController
 	def join
 		event = Event.find(params[:id])
 		event.guests << current_account
+		event.save
+		redirect_to events_path
+	end
+
+	def leave
+		event = Event.find(params[:id])
+		event.guests.delete(current_account)
 		event.save
 		redirect_to events_path
 	end

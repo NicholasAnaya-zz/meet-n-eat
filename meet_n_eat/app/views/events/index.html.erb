@@ -1,10 +1,21 @@
-<% @events.each do |event| %>
-	<%= link_to event.host.first_name, account_path(event.host.id) %> is having <%= link_to "meal", event_path(event.id) %> at <%= event.spot %> 
+<% if @personal %>
 
-	<% unless current_account.attended_events.include?(event) %>
-		<% unless current_account.created_events.include?(event) %>
-			<%= button_to "Join Event", join_path(event.id) %>
+	<% @my_events.each do |event| %>
+		You are joining <%= link_to event.host.first_name, account_path(event.host.id) %>'s event at <%= event.spot %> for around <%= link_to "meal", event_path(event.id) %>
+		<% if (event.host == current_account) %>
+			<%= button_to "Delete Event", event_path(event), {method: :delete}, id: "butn-delete" %>
+		<% else %>
+			<%= button_to "Leave Event", leave_path(event), id: "butn-leave" %>
 		<% end %>
+		<br>
 	<% end %>
-	<br>
+
+<% else %>
+
+	<% @available_events.each do |event| %>
+		<%= link_to event.host.first_name, account_path(event.host) %> is having <%= link_to "meal", event_path(event) %> at <%= event.spot %> 
+		<%= button_to "Join Event", join_path(event), id: "butn-join" %>
+		<br>
+	<% end %>
+
 <% end %>
