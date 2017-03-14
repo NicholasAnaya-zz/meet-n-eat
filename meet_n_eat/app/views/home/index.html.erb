@@ -10,6 +10,7 @@
 	<a href="/events" class="btn btn-danger" role="button" aria-pressed="true">Find Events</a>
 	<a href="/events/new" class="btn btn-danger" role="button" aria-pressed="true">Create Event</a>
 <% else %>
-	<p>Sign in to find meal buddies!<br><%= link_to "Sign In", signin_path %></p>
-	<p>Make A New Account!<br><%= link_to "Sign Up", new_account_path %></p>
+	<p>Log in to find meal buddies!<br><a href="/signin" class="btn btn-danger" role="button" aria-pressed="true">Log In</a></p>
+	<p>Make A New Account!<br><a href="/accounts/new" class="btn btn-danger" role="button" aria-pressed="true">Sign Up</a></p>
+	
 <% end %>
