@@ -14,7 +14,7 @@ class Account < ApplicationRecord
 
   def self.all_events_for_account(id)
     account = Account.find(id)
-    return (account.attended_events << account.created_events)
+    return (account.attended_events + account.created_events)
   end
 
   def self.all_available_events(id)

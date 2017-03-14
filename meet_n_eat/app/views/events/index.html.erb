@@ -3,7 +3,7 @@
 	<% @my_events.each do |event| %>
 		You are joining <%= link_to event.host.first_name, account_path(event.host.id) %>'s event at <%= event.spot %> for around <%= link_to "meal", event_path(event.id) %>
 		<% if (event.host == current_account) %>
-			<%= button_to "Delete Event", event_path(event), {method: :delete}, id: "butn-delete" %>
+			<%= button_to "Delete Event", event_path(event), {method: :delete}%>
 		<% else %>
 			<%= button_to "Leave Event", leave_path(event), id: "butn-leave" %>
 		<% end %>
