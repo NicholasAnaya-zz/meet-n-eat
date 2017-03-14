@@ -6,9 +6,17 @@ class EventsController < ApplicationController
 			@personal = true
 			@my_events = Account.all_events_for_account(current_account.id)
 		else
-			@available_events = Account.all_available_events(current_account.id)
+			if (params[:term])
+				@available_events = Account.all_available_events(current_account.id)
+				@available_events = Event.event_search(@available_events, params[:term])
+			else 
+				@available_events = Account.all_available_events(current_account.id)
+			end
 		end
 	end
+
+	# /events
+	# /accounts/:id/events
 
 	def show
 		@event = Event.find(params[:id])
