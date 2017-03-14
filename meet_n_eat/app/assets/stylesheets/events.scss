@@ -27,3 +27,26 @@ border-radius: 7px;
 .button_to div {
   display: inline;
 }
+
+
+/* events scrolling table */
+.available_events_list {
+    width: 35%;
+    tbody{
+    height:400px;
+    overflow-y:auto;
+    width: 100%;
+    }
+
+    thead,tbody,tr,td,th{
+        display:block;
+    }
+}
+
+thead {
+  tr {
+    th {
+      float:center;
+    }
+  }
+}
