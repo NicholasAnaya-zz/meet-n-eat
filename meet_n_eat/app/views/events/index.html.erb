@@ -1,21 +1,33 @@
 <% if @personal %>
 
-	<% @my_events.each do |event| %>
-		You are joining <%= link_to event.host.first_name, account_path(event.host.id) %>'s event at <%= event.spot %> for around <%= link_to "meal", event_path(event.id) %>
-		<% if (event.host == current_account) %>
-			<%= button_to "Delete Event", event_path(event), {method: :delete}%>
-		<% else %>
-			<%= button_to "Leave Event", leave_path(event), id: "butn-leave" %>
+	<% if @my_events.empty? %>
+		<h3>Oops! Looks like you do not have any meal plans. Maybe <%= link_to("create", new_event_path) %> one?<h3>
+	<% else %>
+		<% @my_events.each do |event| %>
+			<p>You are joining <%= link_to event.host.first_name, account_path(event.host.id) %>'s event at <%= event.spot %> for around <%= link_to "meal", event_path(event.id) %> </p>
+			<% if (event.host == current_account) %>
+				<%= button_to "Delete", event_path(event), {method: :delete, class: "btn btn-warning btn-sm"}%>
+			<% else %>
+				<%= button_to "Leave", leave_path(event), class: "btn btn-danger btn-sm" %>
+			<% end %>
+			<br>
 		<% end %>
-		<br>
 	<% end %>
 
 <% else %>
 
-	<% @available_events.each do |event| %>
-		<%= link_to event.host.first_name, account_path(event.host) %> is having <%= link_to "meal", event_path(event) %> at <%= event.spot %> 
-		<%= button_to "Join Event", join_path(event), id: "butn-join" %>
-		<br>
+	<% if @available_events.empty? %>
+
+		<h3>Oops! Looks like there are no available meal plans. Maybe <%= link_to("create", new_event_path) %> one?<h3>
+
+	<% else %>
+
+		<% @available_events.each do |event| %>
+			<%= link_to event.host.first_name, account_path(event.host) %> is having <%= link_to "meal", event_path(event) %> at <%= event.spot %> 
+			<%= button_to "Join", join_path(event), class: "btn btn-primary btn-sm" %>
+			<br>
+		<% end %>
+
 	<% end %>
 
 <% end %>
