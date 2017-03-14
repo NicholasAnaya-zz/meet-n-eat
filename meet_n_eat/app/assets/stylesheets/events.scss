@@ -1,3 +1,29 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* buttons */
+.btn-join {
+    padding: 6px 12px;
+    border: 0 none;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+    background-color: #02C202;
+
+}
+
+.btn-join{
+border-radius: 7px;
+}
+
+.btn-join:hover {
+  color: #FFFFFF;
+  background-color: #15EB60;
+  border-color: #FFFFFF;
+}
+
+.button_to,
+.button_to div {
+  display: inline;
+}
