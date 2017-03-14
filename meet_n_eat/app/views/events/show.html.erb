@@ -2,7 +2,8 @@ Restaurant: <%= @event.spot %> <br>
 Budget: <%= @event.budget %> <br>
 Location: <%= @event.location %> <br>
 Cuisine: <%= @event.cuisine %> <br>
-Host Name: <%= @event.host.first_name %> <br></br>
+Host Name: <%= @event.host.first_name %> <br>
+Time: <%= @event.time %> <br></br>
 
 Guests: <br>
 <% @event.guests.each do |guest| %>

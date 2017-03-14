@@ -37,13 +37,13 @@
 				</thead>
 
 				<tbody>
-						<% @available_events.each do |event| %>
-							<tr>
-								<td><%= link_to event.host.first_name, account_path(event.host) %> is having <%= link_to "meal", event_path(event) %> at <%= event.spot %></td>
-								<td><%= button_to "Join", join_path(event), class: "btn-join" %></td> <br>
-								<br>
-							</tr>
-						<% end %>
+					<% @available_events.each do |event| %>
+						<tr>
+							<td><%= link_to event.host.first_name, account_path(event.host) %> is having <%= link_to "meal", event_path(event) %> at <%= event.spot %></td>
+							<td><%= button_to "Join", join_path(event), class: "btn-join" %></td> <br>
+							<br>
+						</tr>
+					<% end %>
 			  </tbody>
 	<% end %>
 

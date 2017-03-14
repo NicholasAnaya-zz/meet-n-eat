@@ -20,7 +20,7 @@ class Account < ApplicationRecord
   def self.all_available_events(id)
     account = Account.find(id)
     non_available_events = self.all_events_for_account(account.id)
-    return Event.select { |event| !non_available_events.include?(event) }
+    return Event.select { |event| !event.time.past? && !non_available_events.include?(event) }
   end
 
 end
