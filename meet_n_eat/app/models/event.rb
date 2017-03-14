@@ -9,4 +9,21 @@ class Event < ApplicationRecord
   validates :location, presence: true
   validates :cuisine, presence: true
   validates :time, presence: true
+
+  def self.event_search(arr, term)
+    temp = arr
+    temp = temp.select do |event| 
+      (event.spot.include?(term) || event.location.include?(term) || event.cuisine.include?(term))
+    end
+
+    #byebug
+
+    if temp.empty? 
+      return arr
+    else
+      return temp
+    end
+  end
+
+ 
 end

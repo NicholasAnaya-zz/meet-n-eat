@@ -16,6 +16,11 @@
 
 <% else %>
 
+	<%= form_tag(events_path, method: :get) do %>
+	  <%= text_field_tag :term, params[:term], placeholder: "search events" %>
+	  <%= submit_tag 'Search', name: nil %>
+	<% end %>
+
 	<% if @available_events.empty? %>
 
 		<h3>Oops! Looks like no one else has made a meal plan yet. Maybe <%= link_to("create", new_event_path) %> one?<h3>
