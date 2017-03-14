@@ -23,16 +23,28 @@
 
 	<% if @available_events.empty? %>
 
-		<h3>Oops! Looks like there are no available meal plans. Maybe <%= link_to("create", new_event_path) %> one?<h3>
+		<h3>Oops! Looks like no one else has made a meal plan yet. Maybe <%= link_to("create", new_event_path) %> one?<h3>
 
 	<% else %>
 
-		<% @available_events.each do |event| %>
-			<%= link_to event.host.first_name, account_path(event.host) %> is having <%= link_to "meal", event_path(event) %> at <%= event.spot %> 
-			<%= button_to "Join", join_path(event), class: "btn btn-primary btn-sm" %>
-			<br>
-		<% end %>
+		<div class="find-events-table">
+			<h2>Find Events</h2>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Events Listed By Other People:</th>
+					</tr>
+				</thead>
 
+				<tbody>
+						<% @available_events.each do |event| %>
+							<tr>
+								<td><%= link_to event.host.first_name, account_path(event.host) %> is having <%= link_to "meal", event_path(event) %> at <%= event.spot %></td>
+								<td><%= button_to "Join", join_path(event), class: "btn-join" %></td> <br>
+								<br>
+							</tr>
+						<% end %>
+			  </tbody>
 	<% end %>
 
 <% end %>
