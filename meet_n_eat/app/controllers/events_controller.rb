@@ -10,6 +10,9 @@ class EventsController < ApplicationController
 		end
 	end
 
+	# /events/
+	# /accounts/:id/events
+
 	def show
 		@event = Event.find(params[:id])
 	end
