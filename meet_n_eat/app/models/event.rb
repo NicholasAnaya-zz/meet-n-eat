@@ -16,9 +16,7 @@ class Event < ApplicationRecord
       (event.spot.include?(term) || event.location.include?(term) || event.cuisine.include?(term))
     end
 
-    #byebug
-
-    if temp.empty? 
+    if temp.empty?
       return arr
     else
       return temp

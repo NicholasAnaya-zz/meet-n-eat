@@ -1,7 +1,3 @@
-<% if flash[:error] %>
-<%= flash[:error] %>
-<%end%>
-
 <div <div align="center" type="text" name="search" />
 <h1>Sign Into Your Account!</h1>
  <%= form_for @account, url: signin_path, method: :post do |f| %>

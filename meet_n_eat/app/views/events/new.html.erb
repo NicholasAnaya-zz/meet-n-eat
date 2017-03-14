@@ -1,7 +1,3 @@
-<% if flash[:error] %>
-	<%= flash[:error] %>
-<%end%>
-
 <div class="container-fluid">
 <h1>Create a new Event:</h1>
 <div class="row">
@@ -14,19 +10,33 @@
 	<%= f.label :cuisine %><br>
 	<%= f.text_field :cuisine, class: "form-control" %><br>
 	<%= f.label :time%><br>
-	<%= f.time_select :time, {:minute_step => 15, :ampm => true} %><br></br>
+	<%= f.time_select :time, {:minute_step => 5, :ampm => true} %><br></br>
 	</div>
-	<div class="col offset-4 col-lg-2">
-	<%= f.label "Price Categories:" %><br>
-	<%= f.radio_button :budget, "inexpensive", checked: true%>
-	<%= f.label "Inexpensive" %><br>
-	<%= f.radio_button :budget, "moderate"%>
-	<%= f.label "Moderate" %><br>
-	<%= f.radio_button :budget, "pricey"%>
-	<%= f.label "Pricey" %><br>
-	<%= f.radio_button :budget, "high-end"%>
-	<%= f.label "High-End" %><br></br>
-	<%= f.submit "Create Event", class: "btn btn-primary"%>
+
+	<div class="col-lg-6 form-group">
+		<div id="category-select">
+		<h3> Price Categories: </h3>
+		<div class="radio">
+			<label class="form-check-label"> <%= f.radio_button :budget, "inexpensive", checked: true, class: "form-check-input"%>
+			Inexpensive </label>
+		</div>
+		<div class="radio">
+			<label class="form-check-label"> <%= f.radio_button :budget, "moderate", class: "form-check-input"%> 
+			Moderate </label>
+		</div>
+		<div class="radio">
+			<label class="form-check-label"> 
+				<%= f.radio_button :budget, "pricey", class: "form-check-input"%>
+			Pricey </label>
+		</div>
+		<div class="radio">
+			<label class="form-check-label"> 
+			<%= f.radio_button :budget, "high-end", class: "form-check-input"%>
+			High-End </label>
+		</div>
+		<br></br>
+		<%= f.submit "Create Event", class: "btn btn-primary btn-warning"%>
+		</div>
 	</div>
 <%end%><br>
 </div>

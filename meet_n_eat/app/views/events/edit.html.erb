@@ -1,27 +1,52 @@
-<% if flash[:error] %>
-	<%= flash[:error] %>
-<%end%>
-
+<div class="container-fluid">
 <h1>Edit <%= @event.spot %>:</h1>
-<%= form_for (@event) do |f| %>
-	<%= f.label :spot %><br>
-	<%= f.text_field :spot %><br></br>
-	<%= f.label "Budget Categories" %><br>
-	<%= f.radio_button :budget, "inexpensive", checked: true%>
-	<%= f.label "Inexpensive" %><br>
-	<%= f.radio_button :budget, "moderate"%>
-	<%= f.label "Moderate" %><br>
-	<%= f.radio_button :budget, "pricey"%>
-	<%= f.label "Pricey" %><br>	
-	<%= f.radio_button :budget, "high-end"%>
-	<%= f.label "High-End" %><br></br>
-	<%= f.label :location %><br>
-	<%= f.text_field :location %><br></br>
-	<%= f.label :cuisine %><br>
-	<%= f.text_field :cuisine %><br></br>
-	<%= f.label :time%><br>
-	<%= f.time_select :time%><br></br>
-
-	<%= f.submit "Edit Event"%>
-<%end%><br>
-<%=link_to "home", root_path %>
+	<%= form_for (@event), validate: true do |f| %>
+		<div class="row">
+			<div class="col-md-6 form-group">
+				<%= f.label :restaurant %><br>
+				<%= f.text_field :spot, class: "form-control" %><br>
+				<%= f.label :location %><br>
+				<%= f.text_field :location, class: "form-control" %><br>
+				<%= f.label :cuisine %><br>
+				<%= f.text_field :cuisine, class: "form-control" %><br>
+				<%= f.label :time%><br>
+				<%= f.time_select :time, {:minute_step => 5, :ampm => true} %><br></br>
+			</div>
+			<div class="col-md-6 form-group">
+				<div id="category-select">
+				<h3> Price Categories: </h3>
+				<div class="radio">
+					<label class="form-check-label"> <%= f.radio_button :budget, "inexpensive", checked: true, class: "form-check-input"%>
+					Inexpensive </label>
+				</div>
+				<div class="radio">
+					<label class="form-check-label"> <%= f.radio_button :budget, "moderate", class: "form-check-input"%> 
+					Moderate </label>
+				</div>
+				<div class="radio">
+					<label class="form-check-label"> 
+						<%= f.radio_button :budget, "pricey", class: "form-check-input"%>
+					Pricey </label>
+				</div>
+				<div class="radio">
+					<label class="form-check-label"> 
+					<%= f.radio_button :budget, "high-end", class: "form-check-input"%>
+					High-End </label>
+				</div>
+				<br></br>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-offset-5 col-md-1">
+				<%= f.submit "Save Changes", class: "btn btn-primary btn-warning"%>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1">
+				<%=link_to "go home", root_path %>
+			</div>
+		</div>
+	<%end%>
+	<br>
+</div>

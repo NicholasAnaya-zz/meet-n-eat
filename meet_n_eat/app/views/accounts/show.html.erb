@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Profile</title>
-      <h1> Welcome, <%= @account.first_name%>!</h1>
-        <h3>Profile Information:</h3>
-  </head>
+<title>Profile</title>
+<h1> Welcome, <%= @account.first_name%>!</h1>
+  <h3>Profile Information:</h3>
+<label for="Biography">Biography:</label>
+<p> <%= @account.biography%></p>
 
-  <body>
-    <label for="Biography">Biography:</label>
-      <p> <%= @account.biography%></p>
+<label for="Favorite Food">Favorite Food:</label>
+<p> <%= @account.favorite_food%></p>
 
-    <label for="Favorite Food">Favorite Food:</label>
-      <p> <%= @account.favorite_food%></p>
-
-      <%= button_to "Edit", edit_account_path(@account), method: :get %>
-  </body>
-</html>
+<% if current_account == @account %>
+  <%= button_to "Edit Preferences", edit_account_path(@account), {method: :get, class: "btn btn-secondary"} %>
+<% end %>
