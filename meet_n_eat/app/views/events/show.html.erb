@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-7">
 			<h3> Hosted By: <%= link_to @event.host.first_name, account_path(@event.host) %> </h3> <br>
 			<h6 id="evt-show-header"> Restaurant: <%= @event.spot %> </h6> <br>
 			<h6 id="evt-show-header"> Budget: <%= @event.budget.capitalize %> </h6> <br>
@@ -8,15 +8,18 @@
 			<h6 id="evt-show-header"> Cuisine: <%= @event.cuisine %> </h6> <br>
 			<h6 id="evt-show-header"> Time: <%= @event.time.strftime("%I:%M %p %Z") %> </h6>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-5">
 			<h3> Guests: </h3><br>
 			<p> <%= @event.guests.size %> Participant(s): </p>
 			<% @event.guests.each do |guest| %>
 			<%= link_to(guest.first_name, account_path(guest)) %>,
 			<% end %>
-			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
 			<% if current_account.created_events.include?(@event) %>
-			<%= link_to "Edit", edit_event_path(@event), class: "btn btn-primary btn-sm"  %>
+			<%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-primary btn-sm"  %>
 			<% end %>
 		</div>
 	</div>
