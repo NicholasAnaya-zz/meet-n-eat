@@ -29,28 +29,24 @@
 					<% end %>
 					<br>
 					<% @events.each do |event| %>
-					<h6> Meal @ <%= link_to "#{event.spot}", event_path(event) %> at <%= get_meal_by_time(event.time)%> for <%= get_meal_type_by_time(event.time) %> - <a href="#" data-toggle="modal" data-target="#myModal"><%=event.guests.size%> Participant(s) </a></h6>
-					<div class="modal fade" id="myModal" role="dialog">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
+						<h6> Meal @ <%= link_to "#{event.spot}", event_path(event) %> at <%= get_meal_by_time(event.time)%> for <%= get_meal_type_by_time(event.time) %> - <%= link_to "#{event.guests.size} Participant(s)", "#", {'data-toggle': 'modal', 'data-target': "##{event.id}" }%> </h6>
+						<div class="modal fade" id="<%=event.id%>" role="dialog">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<h4 class="modal-title">Guests attending <%=event.host.first_name%>'s meal</h4>
-								</div>
-								<div class="modal-body">
-									<% event.guests.map do |guest| %> <p><%= guest.username %></p>
+									</div>
+									<div class="modal-body">
+									<% event.guests.map do |guest| %> 
+										<p><%= guest.username %></p>
 									<%end%>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 					<% end %>
 				</div>
 			</div>
 		</div>
 	</div>
-
-</div>
-</div>
-</div>
-</div>
