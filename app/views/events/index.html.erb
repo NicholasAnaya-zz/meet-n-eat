@@ -28,7 +28,7 @@
 
 	<% else %>
 	<% if @available_events.empty? %>
-	<h3>Oops! Looks like no one else has made a meal plan yet. Maybe <%= link_to("create", new_event_path) %> one?<h3>
+	<h3>Oops! There are no additional events for you to attend. Maybe <%= link_to("create", new_event_path) %> one?<h3>
 
 		<% else %>
 		<%= form_tag(events_path, method: :get) do %>

@@ -8,7 +8,7 @@
   
   <div class="panel info">
     <dl class="skillz">
-    <% if current_account %>
+    <% if current_account.id == params[:id].to_i %>
       <dt><%= link_to "Biography:", edit_account_path(current_account) %></dt>
       <dd>100</dd>
       <dt><%=@account.biography%></dt>
