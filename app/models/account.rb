@@ -29,4 +29,18 @@ class Account < ApplicationRecord
     return Event.select { |event| event.is_active? && !unavailable_events.include?(event) }
   end
 
+  def self.create_with_omniauth(auth)
+    user = find_or_create_by(uid: auth['uid'], provider:  auth['provider'])
+    user.email = "#{auth['uid']}@#{auth['provider']}.com"
+    user.password = auth['uid']
+    user.username = auth['info']['name']
+    user.first_name = auth['info']['name'].split(' ').first
+    user.last_name = auth['info']['name'].split(' ').last
+    if Account.exists?(user)
+      user
+    else
+      user.save!
+      user
+    end
+  end
 end

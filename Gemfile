@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
+gem 'font-awesome-rails'
 gem 'rails_bootstrap_navbar'
 gem 'bootstrap-sass', '3.3.6'
 gem 'gravtastic'
+gem 'bootstrap-social-rails'
 
 gem 'rails_email_validator'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -53,3 +55,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# authentication
+gem 'omniauth-facebook'
+gem "figaro"
