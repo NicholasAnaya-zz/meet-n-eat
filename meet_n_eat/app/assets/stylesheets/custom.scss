@@ -24,6 +24,11 @@
 
 /* universal */
 
+.jumbotron {
+   background: rgb(247, 248, 249); /* This is for ie8 and below */
+   background: rgba(247, 248, 249, 0.5); 
+}
+
 body {
   padding-top: 100px;
 }

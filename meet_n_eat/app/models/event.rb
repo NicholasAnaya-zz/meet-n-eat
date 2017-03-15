@@ -10,6 +10,10 @@ class Event < ApplicationRecord
   validates :cuisine, presence: true
   validates :time, presence: true
 
+  def is_active?
+    return !self.time.past?
+  end
+
   def self.event_search(arr, term)
     temp = arr
     temp = temp.select do |event| 
@@ -23,5 +27,8 @@ class Event < ApplicationRecord
     end
   end
 
+  def self.events_coming_up
+    return self.order('time DESC').limit(5).select { |event| event.is_active? }
+  end
  
 end

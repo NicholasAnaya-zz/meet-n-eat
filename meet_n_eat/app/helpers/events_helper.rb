@@ -4,15 +4,15 @@ module EventsHelper
 		if hour == 0 
 			return "at Midnight"
 		elsif hour > 0 && hour <= 4
-			return get_actual_time(time) + " Early Morning"
+			return get_actual_time(time) + " early morning"
 		elsif hour > 4 && hour < 12
-			return get_actual_time(time) + " Morning"
+			return get_actual_time(time) + " morning"
 		elsif hour == 12
 			return "at Noon"
 		elsif hour > 12 && hour <= 18
-			return get_actual_time(time) + " Afternoon"
+			return get_actual_time(time) + " afternoon"
 		elsif hour > 18 && hour < 24
-			return get_actual_time(time) + " Evening"
+			return get_actual_time(time) + " evening"
 		end
 	end
 

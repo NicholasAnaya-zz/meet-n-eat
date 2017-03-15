@@ -31,6 +31,8 @@
     	<% else %>
     		<%= link_to "Meet n' Eat", root_path, id: "logo" %>
       			<ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Login", signin_path, id: "nav_links"%></li>
+            <li><%= link_to "Sign Up", new_account_path, id: "nav_links"%></li>
        		 	<li><%= link_to "Home", root_path, id: "nav_links"%></li>
       			</ul>
     	<% end %>
