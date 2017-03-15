@@ -31,7 +31,7 @@
 					<% end %>
 					<br>
 					<% @events.each do |event| %>
-						<h6> Meal @ <%= link_to "#{event.spot}", event_path(event) %> at <%= get_meal_by_time(event.time)%> for <%= get_meal_type_by_time(event.time) %> - <a href="#" data-toggle="modal" data-target="##{event.id}"> <%=event.guests.size%> Participant(s) </a></h6>
+						<h6> Meal @ <%= link_to "#{event.spot}", event_path(event) %> at <%= get_meal_by_time(event.time)%> for <%= get_meal_type_by_time(event.time) %> - <%= link_to("#{event.guests.size} Participant(s)", "#", {'data-toggle': 'modal', 'data-target': '##{event.id}'}) %></h6>
 						<div class="modal fade" id="<%=event.id%>" role="dialog">
 							<div class="modal-dialog">
 								<div class="modal-content">
