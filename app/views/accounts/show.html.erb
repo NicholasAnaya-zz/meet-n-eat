@@ -8,12 +8,22 @@
   
   <div class="panel info">
     <dl class="skillz">
+    <% if current_account %>
       <dt><%= link_to "Biography:", edit_account_path(current_account) %></dt>
       <dd>100</dd>
       <dt><%=@account.biography%></dt>
       <dt><%=link_to "Favorite Food:", edit_account_path(current_account) %></dt>
       <dd>100</dd>
       <dt><%=@account.favorite_food%></dt>
+    <% else %>
+      <dt>Biography:</dt>
+      <dd>100</dd>
+      <dt><%=@account.biography%></dt>
+      <dt>Favorite Food</dt>
+      <dd>100</dd>
+      <dt><%=@account.favorite_food%></dt>
+    <% end %>
+
     </dl>
     
   </div>
