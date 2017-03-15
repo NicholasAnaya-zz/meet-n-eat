@@ -4,15 +4,15 @@ module EventsHelper
 		if hour == 0 
 			return "at Midnight"
 		elsif hour > 0 && hour <= 4
-			return "#{time.strftime("%I:%M %p")} in the early morning"
+			return "#{time.strftime("%I:%M")} in the early morning"
 		elsif hour > 4 && hour < 12
-			return  "#{time.strftime("%I:%M %p")} in the morning"
+			return  "#{time.strftime("%I:%M")} in the morning"
 		elsif hour == 12
 			return "at Noon"
 		elsif hour > 12 && hour <= 18
-			return "#{time.strftime("%I:%M %p")} in the afternoon"
+			return "#{time.strftime("%I:%M")} in the afternoon"
 		elsif hour > 18 && hour < 24
-			return "#{time.strftime("%I:%M %p")} in the evening"
+			return "#{time.strftime("%I:%M")} in the evening"
 		end
 	end
 
