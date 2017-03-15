@@ -1,8 +1,6 @@
 <section class="card">
   <figure class="panel meta">
-    <picture>
-      <img class="avatar" <img src="http://icons.iconarchive.com/icons/graphicloads/colorful-long-shadow/256/Restaurant-icon.png" width="128" height="128"/>
-    </picture>
+     <%= image_tag @account.gravatar_url, class: "avatar", height: '128', width: '128' %>
     <figcaption>
       <h1 class="name"><%= @account.username%></h1>
     </figcaption>
