@@ -1,10 +1,15 @@
-Restaurant: <%= @event.spot %> <br>
-Budget: <%= @event.budget %> <br>
-Location: <%= @event.location %> <br>
-Cuisine: <%= @event.cuisine %> <br>
-Host Name: <%= @event.host.first_name %> <br></br>
+<h5> Restaurant: <%= @event.spot %> </h5> <br>
+<h5> Budget: <%= @event.budget %> </h5> <br>
+<h5> Location: <%= @event.location %> </h5> <br>
+<h5> Cuisine: <%= @event.cuisine %> </h5> <br>
+<h5> Host Name: <%= @event.host.first_name %> </h5> <br>
+<h5> Time: <%= @event.time %> </h5> <br>
 
-Guests: <br>
+<h5> Guests: </h5> <br>
 <% @event.guests.each do |guest| %>
   <%= guest.first_name %>,
+<% end %>
+
+<% if current_account.created_events.include?(@event) %>
+	<%= link_to "Edit", edit_event_path(@event), class: "btn btn-primary btn-sm" %>
 <% end %>

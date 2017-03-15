@@ -1,23 +1,22 @@
-<% if flash[:error] %>
-<%= flash[:error] %>
-<%end%>
 
-<h1>Register For A New Account:</h1>
-
-<div align="center" type="text" name="search" />
-
-<%= form_for (@account) do |f| %>
-	<%= f.label :username %><br>
-	<%= f.text_field :username %><br>
-	<%= f.label :password %><br>
-	<%= f.password_field :password%><br>
-	<%= f.label :first_name %><br>
-	<%= f.text_field :first_name %><br>
-	<%= f.label :last_name%><br>
-	<%= f.text_field :last_name %><br>
-	<%= f.label :email %><br>
-	<%= f.text_field :email %><br></br>
-<%= f.submit "Create Account"%>
-<%end%><br>
+<div class="container-fluid">
+	<div class="row"> 
+		<div class="col-md-6 col-md-offset-3">
+		<h1>Register For A New Account:</h1>
+		<%= form_for (@account) do |f| %>
+			<%= f.label :username %><br>
+			<%= f.text_field :username, class: "form-control" %><br>
+			<%= f.label :password %><br>
+			<%= f.password_field :password, class: "form-control"%><br>
+			<%= f.label :first_name %><br>
+			<%= f.text_field :first_name, class: "form-control" %><br>
+			<%= f.label :last_name%><br>
+			<%= f.text_field :last_name, class: "form-control" %><br>
+			<%= f.label :email %><br>
+			<%= f.text_field :email, class: "form-control" %><br></br>
+			<%= f.submit "Create Account", class: "btn btn-success" %>
+		<%end%>
+	</div>
+</div>
 
 <%=link_to "go home", root_path %>

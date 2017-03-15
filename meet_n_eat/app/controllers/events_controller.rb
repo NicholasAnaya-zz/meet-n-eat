@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 	before_action :account_logged_in
+	before_action :check_if_own_page, only: [:edit]
 
 	def index
 		if params[:account_id]
@@ -27,10 +28,14 @@ class EventsController < ApplicationController
 		event = Event.new(event_params)
 		event.host_id = session[:account_id] #add host_id to our event so it can validate
 		if event.valid?
+			if event.time.past?
+				#if it's a time in the past, lets assume it's for tomorrow
+				event.time = event.time + 1.day
+			end
 			event.save
 			redirect_to event_path(event)
 		else
-			# need to add flash message here
+			flash[:error] = "Unsuccessfully updated #{event.spot}."
 			redirect_to new_event_path
 		end
 	end
@@ -52,6 +57,7 @@ class EventsController < ApplicationController
 		event = Event.find(params[:id])
 		event.guests << current_account
 		event.save
+		flash[:message] = "Successfully joined #{event.spot}"
 		redirect_to events_path
 	end
 
@@ -59,18 +65,25 @@ class EventsController < ApplicationController
 		event = Event.find(params[:id])
 		event.guests.delete(current_account)
 		event.save
-		redirect_to events_path
+		flash[:message] = "Successfully left #{event.spot}"
+		redirect_to account_events_path(current_account)
 	end
 
 	def destroy
 		event = Event.find(params[:id])
 		event.destroy
-		#flash message here like "successfully deleted event"?
-		redirect_to events_path
+		flash[:message] = "Successfully deleted #{event.spot}"
+		redirect_to account_events_path(current_account)
 	end
 
 	private
 
+	def check_if_own_page
+		unless session[:account_id] === Event.find(params[:id].to_i).host.id
+			flash[:error] = "Sorry, you do not have permission to do that."
+			redirect_to event_path(params[:id])
+		end
+	end
 
 	def event_params
 		return params.require(:event).permit(:spot, :budget, :location, :cuisine, :time, :host_id)

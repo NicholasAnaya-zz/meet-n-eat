@@ -21,3 +21,7 @@
   </div>
   
 </section>
+
+<% if current_account == @account %>
+  <%= button_to "Edit Preferences", edit_account_path(@account), {method: :get, class: "btn btn-secondary"} %>
+<% end %>

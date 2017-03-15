@@ -14,13 +14,17 @@ class Account < ApplicationRecord
 
   def self.all_events_for_account(id)
     account = Account.find(id)
-    return (account.attended_events + account.created_events)
+    return (account.attended_events + account.created_events).select { |event| event.is_active? }
+  end
+
+  def self.events_coming_up(id)
+    return self.all_events_for_account(id).sort { |a, b| a.time <=> b.time }.take(5)
   end
 
   def self.all_available_events(id)
     account = Account.find(id)
-    non_available_events = self.all_events_for_account(account.id)
-    return Event.select { |event| !non_available_events.include?(event) }
+    unavailable_events = Account.all_events_for_account(account.id)
+    return Event.select { |event| event.is_active? && !unavailable_events.include?(event) }
   end
 
 end
