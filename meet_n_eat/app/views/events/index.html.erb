@@ -1,61 +1,62 @@
 <% if @personal %>
 
-	<% if @my_events.empty? %>
-		<h3>Oops! Looks like you do not have any meal plans. Try <%= link_to("joining", events_path) %> meals near you - OR - you can also <%= link_to("create", new_event_path) %> your own!<h3>
+<% if @my_events.empty? %>
+<h3>Oops! Looks like you do not have any meal plans. Try <%= link_to("joining", events_path) %> meals near you - OR - you can also <%= link_to("create", new_event_path) %> your own!<h3>
 	<% else %>
-		<table class="table">
-			<thead>
-				<tr>
+	<table class="table">
+		<thead>
+			<tr>
 				<th> Your Events: </th>
-				</tr>
-			</thead>
-			<% if flash[:message] %>
-  				<%= flash[:message] %>
-			<%end%>
-			<tbody>
-				<% @my_events.each do |event| %>
-					<tr>
-					<% if (event.host == current_account) %>
-						<td>You are hosting an <%= link_to "event", event_path(event.id) %> at <%= event.spot %> at around <%=get_meal_by_time(event.time)%> <%= button_to "View", event_path(event), {method: :get, class: "btn btn-success btn-sm"}%> <%= button_to "Edit", edit_event_path(event), {method: :get, class: "btn btn-success btn-sm"}%> <%= button_to "Delete", event_path(event), {method: :delete, class: "btn btn-danger btn-sm"}%> </td>
-					<% else %>
-						<td>You are joining <%= link_to event.host.first_name, account_path(event.host.id) %>'s event at <%= event.spot %> for around <%= link_to "meal", event_path(event.id) %> <%= button_to "View", event_path(event), {method: :get, class: "btn btn-success btn-sm"}%> <%= button_to "Leave", leave_path(event), class: "btn btn-danger btn-sm" %></td>
-					<% end %>
-					</tr>
+			</tr>
+		</thead>
+		<% if flash[:message] %>
+		<%= flash[:message] %>
+		<%end%>
+		<tbody>
+			<% @my_events.each do |event| %>
+			<tr>
+				<% if (event.host == current_account) %>
+				<th>You are hosting an <%= link_to "event", event_path(event.id) %> at <%= event.spot %> at around <%=get_meal_by_time(event.time)%> <%= button_to "View", event_path(event), {method: :get, class: "btn btn-success btn-sm"}%> <%= button_to "Edit", edit_event_path(event), {method: :get, class: "btn btn-success btn-sm"}%> <%= button_to "Delete", event_path(event), {method: :delete, class: "btn btn-danger btn-sm"}%> </th>
+				<% else %>
+				<th>You are joining <%= link_to event.host.first_name, account_path(event.host.id) %>'s event at <%= event.spot %> at around <%=get_meal_by_time(event.time)%> <%= button_to "View", event_path(event), {method: :get, class: "btn btn-success btn-sm"}%> <%= button_to "Leave", leave_path(event), class: "btn btn-danger btn-sm" %></th>
 				<% end %>
-			</tbody>
-		</table>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
 	<% end %>
 
 	<% else %>
-		<% if @available_events.empty? %>
-			<h3>Oops! Looks like no one else has made a meal plan yet. Maybe <%= link_to("create", new_event_path) %> one?<h3>
+	<% if @available_events.empty? %>
+	<h3>Oops! Looks like no one else has made a meal plan yet. Maybe <%= link_to("create", new_event_path) %> one?<h3>
 
 		<% else %>
-			<%= form_tag(events_path, method: :get) do %>
-				<%= text_field_tag :term, params[:term], placeholder: "Search Events" %>
-				<%= submit_tag 'Search', name: nil, class: "btn btn-secondary" %>
-			<% end %>
-			<div class="available_events_list">
-				<table class="table">
-					<br>
-					<thead>
-						<tr>
-							<th>Most Recent Events:</th>
-						</tr>
-					</thead>
-					<% if flash[:message] %>
-          				<%= flash[:message] %>
-        			<%end%>
-					<tbody>
-						<% @available_events.each do |event| %>
-						<tr>
-							<td><%= link_to event.host.first_name, account_path(event.host) %> is having <%= link_to get_meal_type_by_time(event.time), event_path(event) %> at <%= event.spot %>
-							<%= button_to "Join", join_path(event), class: "btn-join" %></td>
-						</tr>
-						<% end %>
-					</tbody>
-				</table>
-			</div>
-	<% end %>
+		<%= form_tag(events_path, method: :get) do %>
+		<%= text_field_tag :term, params[:term], placeholder: "Search Events" %>
+		<%= submit_tag 'Search', name: nil, class: "btn btn-secondary" %>
+		<% end %>
+		<div class="available_events_list">
+			<table class="table">
+				<br>
+				<thead>
+					<tr>
+						<th>Most Recent Events:</th>
+					</tr>
+				</thead>
+				<% if flash[:message] %>
+				<%= flash[:message] %>
+				<%end%>
+				<tbody>
+					<% @available_events.each do |event| %>
+					<tr>
+						<th><%= link_to event.host.first_name, account_path(event.host) %> is having <%= link_to get_meal_type_by_time(event.time), event_path(event) %> at <%= event.spot %>
+							<%= button_to "Join", join_path(event), class: "btn-join" %>
+						</th>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<% end %>
 
-<% end %>
+		<% end %>

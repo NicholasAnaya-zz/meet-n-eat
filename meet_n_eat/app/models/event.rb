@@ -17,7 +17,7 @@ class Event < ApplicationRecord
   def self.event_search(arr, term)
     temp = arr
     temp = temp.select do |event| 
-      (event.spot.include?(term) || event.location.include?(term) || event.cuisine.include?(term))
+      (event.spot.downcase.include?(term.downcase) || event.location.downcase.include?(term.downcase) || event.cuisine.downcase.include?(term.downcase))
     end
 
     if temp.empty?

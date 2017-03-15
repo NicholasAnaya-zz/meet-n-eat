@@ -10,7 +10,7 @@ class EventsController < ApplicationController
 			if (params[:term])
 				@available_events = Account.all_available_events(current_account.id)
 				@available_events = Event.event_search(@available_events, params[:term])
-			else 
+			else
 				@available_events = Account.all_available_events(current_account.id)
 			end
 		end
