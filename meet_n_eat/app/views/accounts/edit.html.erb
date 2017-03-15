@@ -1,12 +1,22 @@
-<h1> <%= @account.first_name%>'s Page </h1>
-<h2>Welcome to Meet N Eat</h2>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 form-group">
+			<h1> <%= @account.first_name%>'s Page </h1>
 
-<h4>Edit Your Profile, Sucka:</h4>
-  <%= form_for (@account) do |f| %>
-  	<%= f.label :biography %><br>
-  	<%= f.text_area :biography %><br></br>
-    <%= f.label :favorite_food %><br>
-  	<%= f.text_area :favorite_food %><br></br>
+			<text align=CENTER><h4>Edit Your Profile</h4>
+  				<%= form_for (@account) do |f| %>
+			
+  					<%= f.label :biography %><br>
+  					<%= f.text_area :biography %><br></br>
+    				<%= f.label :favorite_food %><br>
+  					<%= f.text_area :favorite_food %><br></br>
 
-  	<%= f.submit "Submit Changes", class: "btn btn-secondary"%>
-<%end%>
+					<%= f.submit "Save Changes", class: "btn btn-primary btn-success btn-lg"%><br></br>
+					<%= link_to "Delete Account", account_path(current_account), method: :delete, data: {confirm: "Are you sure that you want to delete your account?"}, id: "nav-links", class: "btn btn-primary btn-danger btn-lg" %>
+				
+				<%end%>
+
+ 			</text>	
+ 		</div>
+ 	</div>
+ </div>
