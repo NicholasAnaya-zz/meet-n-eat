@@ -17,9 +17,8 @@
 					<%= link_to "My Events", account_events_path(current_account), class: "btn btn-danger btn-lg" %>
 				<% else %>
 					<%= link_to "Sign In", signin_path, class: "btn btn-danger btn-lg" %>
-					<%= link_to "Sign Up", new_account_path, class: "btn btn-danger btn-lg" %><br>
-					<p style="margin: 0; padding: 0">or</p>
-          <%= link_to("<span class='fa fa-facebook'></span>Sign In With Facebook!".html_safe, "/auth/facebook?client_id=#{ENV['FACEBOOK_APP_ID']}", class: "btn btn-social btn-facebook") %>
+					<%= link_to "Sign Up", new_account_path, class: "btn btn-danger btn-lg" %>
+          <%= link_to("login with facebook!", "/auth/facebook?client_id=#{ENV['FACEBOOK_APP_ID']}", class: "btn btn-success") %>
 				<% end %>
 			</div>
 			<div class="col-md-6">
