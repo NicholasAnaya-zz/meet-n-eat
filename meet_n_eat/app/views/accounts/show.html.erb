@@ -8,10 +8,10 @@
   
   <div class="panel info">
     <dl class="skillz">
-      <dt>Biography:</dt>
+      <dt><%= link_to "Biography:", edit_account_path(current_account) %></dt>
       <dd>100</dd>
-      <dt><%=@account.biography%></dt><br></br>
-      <dt>Favorite Food:</dt>
+      <dt><%=@account.biography%></dt>
+      <dt><%=link_to "Favorite Food:", edit_account_path(current_account) %></dt>
       <dd>100</dd>
       <dt><%=@account.favorite_food%></dt>
     </dl>
