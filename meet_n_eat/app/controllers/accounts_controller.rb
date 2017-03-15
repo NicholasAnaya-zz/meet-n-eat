@@ -39,6 +39,8 @@ class AccountsController < ApplicationController
 	def destroy
 		account = Account.find(params[:id])
 		log_out
+		account.created_events.each { |event| event.destroy }
+		account.attended_events.each { |event| event.guests.delete(account) }
 		account.delete
 		flash[:message] = "Successfully deleted account"
 		redirect_to root_path
