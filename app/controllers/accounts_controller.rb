@@ -21,14 +21,6 @@ class AccountsController < ApplicationController
 			log_in(@account)
 			redirect_to account_path(@account)
 		else
-			# if @account.first_name.valid? == false
-			# 	flash[:error] = "Your First Name is Invalid"
-			# elsif @account.last_name.valid? == false
-			# 	flash[:error] = "Your Last Name is Invalid"
-			# elsif @account.username.valid? == false
-			# 	flash[:error] = "Your Username is Invalid"
-			# elsif @account.password.valid? == false
-			# 	flash[:error] = "Your Password is Invalid"
 			render :new
 		end
 	end
@@ -52,10 +44,6 @@ class AccountsController < ApplicationController
 		flash[:message] = "Successfully deleted account"
 		redirect_to root_path
 	end
-
-	
-
-
 
 	private
 
