@@ -18,7 +18,7 @@ class Account < ApplicationRecord
   end
 
   def self.events_coming_up(id)
-    return self.all_events_for_account(id).sort { |a, b| a.time <=> b.time }
+    return self.all_events_for_account(id).sort { |a, b| a.time <=> b.time }.take(5)
   end
 
   def self.all_available_events(id)
