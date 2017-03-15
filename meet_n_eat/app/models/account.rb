@@ -1,5 +1,7 @@
 class Account < ApplicationRecord
   has_secure_password
+  include Gravtastic
+  gravtastic
 
   #Relationships
   has_many :created_events, class_name: "Event", foreign_key: "host_id"

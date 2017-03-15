@@ -68,6 +68,7 @@ GEM
     gem_config (0.3.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gravtastic (3.2.6)
     i18n (0.8.1)
     jbuilder (2.6.3)
       activesupport (>= 3.0.0, < 5.2)
@@ -177,6 +178,7 @@ DEPENDENCIES
   byebug
   client_side_validations
   coffee-rails (~> 4.2)
+  gravtastic
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

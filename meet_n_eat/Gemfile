@@ -7,6 +7,7 @@ end
 
 gem 'rails_bootstrap_navbar'
 gem 'bootstrap-sass', '3.3.6'
+gem 'gravtastic'
 
 gem 'rails_email_validator'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
