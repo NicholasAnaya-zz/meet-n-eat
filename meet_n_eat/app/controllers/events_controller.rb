@@ -28,6 +28,10 @@ class EventsController < ApplicationController
 		event = Event.new(event_params)
 		event.host_id = session[:account_id] #add host_id to our event so it can validate
 		if event.valid?
+			if event.time.past?
+				#if it's a time in the past, lets assume it's for tomorrow
+				event.time = event.time + 1.day
+			end
 			event.save
 			redirect_to event_path(event)
 		else
