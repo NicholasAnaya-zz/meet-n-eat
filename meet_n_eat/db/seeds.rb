@@ -1,7 +1,15 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Account.create(username: "noah", password: "testtest", email: "noah@gmail.com", first_name: "noah", last_name: "s")
+Account.create(username: "nick", email: "nick@gmail.com", first_name: "nick", last_name: "a")
+Account.create(username: "alex", email: "alex@gmail.com", first_name: "alex", last_name: "r")
+Account.create(username: "joe", email: "joe@gmail.com", first_name: "joe", last_name: "schmoe")
+Account.create(username: "steve", email: "steve@gmail.com", first_name: "steve", last_name: "smith")
+Account.create(username: "john", email: "john@gmail.com", first_name: "john", last_name: "doe")
+
+event1 = Event.create(spot: "Chipotle", budget: "moderate", location: "FiDi", host_id: 1, time: ActiveSupport::TimeZone['Eastern Time (US & Canada)'].parse('2017-07-23'), active: true)
+Event.create(spot: "Bareburger", budget: "moderate", location: "FiDi", host_id: 1, time: ActiveSupport::TimeZone['Eastern Time (US & Canada)'].parse('2017-07-23'), active: true)
+Event.create(spot: "Deli", budget: "moderate", location: "FiDi", host_id: 1, time: ActiveSupport::TimeZone['Eastern Time (US & Canada)'].parse('2017-07-23'), active: true)
+Event.create(spot: "Shake Shack", budget: "moderate", location: "FiDi", host_id: 1, time: ActiveSupport::TimeZone['Eastern Time (US & Canada)'].parse('2017-07-23'), active: true)
+Event.create(spot: "Hale And Hearty", budget: "moderate", location: "FiDi", host_id: 1, time: ActiveSupport::TimeZone['Eastern Time (US & Canada)'].parse('2017-07-23'), active: true)
+Event.create(spot: "Subway", budget: "moderate", location: "FiDi", host_id: 1, time: ActiveSupport::TimeZone['Eastern Time (US & Canada)'].parse('2017-07-23'), active: true)
+
+event1.guests << Account.all.limit(4)
