@@ -23,13 +23,13 @@
 			</div>
 			<div class="col-md-6">
 				<% if logged_in? %>
-					<h3> Your Upcoming Events: </h3>
+					<h3>Your Upcoming Events:</h3>
 				<% else %>
 					<h3> Some Upcoming Events: </h3>
 				<% end %>
 				<br>
 				<% @events.each do |event| %>
-					<h6> Meal @ <%= event.spot %> at <%= get_meal_by_time(event.time)%> for <%= get_meal_type_by_time(event.time) %> - <%=event.guests.size%> Participant(s) </h6>
+					<h6> Meal @ <%= link_to "#{event.spot}", event_path(event) %> at <%= get_meal_by_time(event.time)%> for <%= get_meal_type_by_time(event.time) %> - <%=event.guests.size%> Participant(s) </h6>
 				<% end %>
 			</div>
 		</div>
