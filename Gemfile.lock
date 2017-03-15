@@ -47,6 +47,8 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap-social-rails (4.12.0)
+      railties (>= 3.1)
     builder (3.2.3)
     byebug (9.0.6)
     client_side_validations (9.1.0)
@@ -69,6 +71,8 @@ GEM
     ffi (1.9.18)
     figaro (1.1.1)
       thor (~> 0.14)
+    font-awesome-rails (4.7.0.1)
+      railties (>= 3.2, < 5.1)
     gem_config (0.3.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -194,10 +198,12 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootstrap-sass (= 3.3.6)
+  bootstrap-social-rails
   byebug
   client_side_validations
   coffee-rails (~> 4.2)
   figaro
+  font-awesome-rails
   gravtastic
   jbuilder (~> 2.5)
   jquery-rails
