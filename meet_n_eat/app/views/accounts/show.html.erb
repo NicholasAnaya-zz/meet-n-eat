@@ -1,19 +1,23 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Profile</title>
-      <h1> Welcome, <%= @account.first_name%>!</h1>
-        <h3>Profile Information:</h3>
-  </head>
-
-  <body>
-    <label for="Biography">Biography:</label>
-      <p> <%= @account.biography%></p>
-
-    <label for="Favorite Food">Favorite Food:</label>
-      <p> <%= @account.favorite_food%></p>
-
-      <%= button_to "Edit", edit_account_path(@account), method: :get %>
-  </body>
-</html>
+<section class="card">
+  <figure class="panel meta">
+    <picture>
+      <img class="avatar" <img src="http://icons.iconarchive.com/icons/graphicloads/colorful-long-shadow/256/Restaurant-icon.png" width="128" height="128"/>
+    </picture>
+    <figcaption>
+      <h1 class="name"><%= @account.username%></h1>
+    </figcaption>
+  </figure>
+  
+  <div class="panel info">
+    <dl class="skillz">
+      <dt>Biography:</dt>
+      <dd>100</dd>
+      <dt><%=@account.biography%></dt><br></br>
+      <dt>Favorite Food:</dt>
+      <dd>100</dd>
+      <dt><%=@account.favorite_food%></dt>
+    </dl>
+    
+  </div>
+  
+</section>
