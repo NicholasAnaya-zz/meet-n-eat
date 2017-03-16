@@ -4,4 +4,4 @@ Hungry? Lonely? Want to meet new people while eating?
 
 Find, Create, and View your own meals. 
 
-Try out our web-app at [Meet-N-Eat](http://meet-n-eat.herokuapps.com).
+Try out our web-app at [Meet-N-Eat](http://meet-n-eat.herokuapp.com).
