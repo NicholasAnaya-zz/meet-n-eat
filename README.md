@@ -9,5 +9,5 @@ Try out our web-app at [Meet-N-Eat](http://meet-n-eat.herokuapp.com).
 ## USAGE
 Everything is packaged and ready to go. Run the following to run this application locally
 
-- ` bundle `
+- ` bundle install `
 - ` rails s `
